@@ -143,7 +143,7 @@ function lineChart(s) {
     return `<path d="${d}" stroke="${PALETTE[k % PALETTE.length]}" stroke-width="${k < 2 ? 2.2 : 1.6}" fill="none" ${dash}><title>${esc(q.name)}</title></path>`;
   }).join("");
   const legend = s.series.map((q, k) => `<span style="--c:${PALETTE[k % PALETTE.length]}">${esc(q.name)}</span>`).join("");
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Line chart: ${esc(s.series.map(q => q.name).join(", "))}">${g}${paths}</svg><div class="legend">${legend}</div>`;
+  return `<div class="chart-wrap" style="aspect-ratio:${W}/${H}"><svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Line chart: ${esc(s.series.map(q => q.name).join(", "))}">${g}${paths}</svg></div><div class="legend">${legend}</div>`;
 }
 function barChart(b) {
   const W = 720, H = 240, P = {l: 52, r: 16, t: 12, b: 48}, n = b.labels.length;
@@ -152,7 +152,7 @@ function barChart(b) {
   const bars = b.values.map((v, i) => `<rect x="${(P.l + i * bw + bw * .15).toFixed(1)}" y="${Math.min(Y(v), Y(0)).toFixed(1)}" width="${(bw * .7).toFixed(1)}" height="${Math.abs(Y(v) - Y(0)).toFixed(1)}" rx="3" fill="${PALETTE[0]}"><title>${esc(b.labels[i])}: ${fmt(v)}</title></rect>
      <text x="${(P.l + i * bw + bw / 2).toFixed(1)}" y="${(Math.min(Y(v), Y(0)) - 4).toFixed(1)}" font-size="10" text-anchor="middle" fill="currentColor" stroke="none">${fmt(+v.toPrecision(3))}</text>
      <text x="${(P.l + i * bw + bw / 2).toFixed(1)}" y="${H - 30}" font-size="10" text-anchor="middle" fill="currentColor" stroke="none" transform="rotate(${n > 8 ? -30 : 0} ${(P.l + i * bw + bw / 2).toFixed(1)} ${H - 30})">${esc(String(b.labels[i]).slice(0, 14))}</text>`).join("");
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart: ${esc(b.label || "")}"><line x1="${P.l}" x2="${W - P.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="currentColor" stroke-opacity=".3"/>${bars}</svg>`;
+  return `<div class="chart-wrap" style="aspect-ratio:${W}/${H}"><svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart: ${esc(b.label || "")}"><line x1="${P.l}" x2="${W - P.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="currentColor" stroke-opacity=".3"/>${bars}</svg></div>`;
 }
 
 // ---------- boot ----------

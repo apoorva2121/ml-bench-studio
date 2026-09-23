@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -23,6 +23,15 @@ from registry import Registry  # noqa: E402
 
 app = FastAPI(title="ML Bench Studio", version="0.1.0")
 registry = Registry()
+
+
+@app.middleware("http")
+async def no_cache_static(request: Request, call_next):
+    """Local dev tool: never let the browser serve a stale app.js / styles.css after an edit."""
+    resp = await call_next(request)
+    if request.url.path == "/" or request.url.path.startswith("/static"):
+        resp.headers["Cache-Control"] = "no-store"
+    return resp
 
 
 class RunRequest(BaseModel):

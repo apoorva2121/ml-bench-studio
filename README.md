@@ -66,3 +66,12 @@ style, Inter, purple primary / cyan accent, dense dashboard spacing, subtle moti
 themes. Accessibility: 44 px targets, visible focus rings, labelled fields with helper text, errors
 next to the form, `prefers-reduced-motion` respected, SVG icons (no emoji), charts carry `role="img"`
 labels and tooltips.
+
+## Status (23 Sep 2026) — work in progress
+
+All seven plugins pass their examples through the API (`/api/run/<id>`), and the home grid, model
+screen, forms, examples, validation errors, metrics, images and tables render. **Known bug:** on the
+M4 screen the tab's renderer freezes when the line chart is inserted, even though the chart function
+itself returns in ~50 ms in Node. Suspected cause is SVG sizing inside the CSS grid; wrapping the SVG in a
+fixed-aspect container did not resolve it. Next step: render charts to `<canvas>` or a chart library
+instead of inline SVG. UI work is paused until the models are finished.

@@ -95,7 +95,8 @@ button.ghost { background:transparent; color:var(--color-foreground); border:1px
 .section { margin-top:var(--space-4) } .section h3 { font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--color-muted-foreground); margin:0 0 var(--space-2) }
 .table-wrap { overflow-x:auto } table { border-collapse:collapse; width:100%; font-size:13px } th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--color-border); vertical-align:top } th { color:var(--color-muted-foreground); font-weight:600 }
 td.yes { color:var(--color-success); font-weight:700 } td.no { color:var(--color-muted-foreground) }
-.chart { width:100%; height:auto; background:var(--color-background); border:1px solid var(--color-border); border-radius:var(--radius-sm) }
+.chart-wrap { width:100%; max-width:100%; background:var(--color-background); border:1px solid var(--color-border); border-radius:var(--radius-sm); overflow:hidden }
+.chart { display:block; width:100%; height:100% }
 .legend { display:flex; flex-wrap:wrap; gap:10px; font-size:12px; margin-top:6px } .legend span::before { content:""; display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; background:var(--c) }
 .answer { white-space:pre-wrap; background:var(--color-muted); padding:12px; border-radius:var(--radius-sm); font-size:15px }
 .cite { border-left:3px solid var(--color-accent); padding:8px 10px; margin-top:8px; font-size:13px; background:var(--color-muted); border-radius:0 var(--radius-sm) var(--radius-sm) 0 } .cite .t { color:var(--color-muted-foreground); margin-top:3px }
