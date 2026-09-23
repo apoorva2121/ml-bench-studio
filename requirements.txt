@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pillow
+# Model dependencies come from the sibling repos (see README): pandas, numpy, scikit-learn, lightgbm, statsforecast,
+# rank-bm25, torch, sentence-transformers, faiss-cpu, pyyaml, pyarrow, joblib
