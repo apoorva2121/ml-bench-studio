@@ -75,3 +75,7 @@ M4 screen the tab's renderer freezes when the line chart is inserted, even thoug
 itself returns in ~50 ms in Node. Suspected cause is SVG sizing inside the CSS grid; wrapping the SVG in a
 fixed-aspect container did not resolve it. Next step: render charts to `<canvas>` or a chart library
 instead of inline SVG. UI work is paused until the models are finished.
+
+## Licence
+
+[MIT](LICENSE).
